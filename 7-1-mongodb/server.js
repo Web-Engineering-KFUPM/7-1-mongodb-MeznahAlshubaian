@@ -179,9 +179,9 @@ mongoose.connect(url)
 const studentSchema = new mongoose.Schema({
     name: String,
     age: Number,
-    major: String
+   major: String
 });
-const Student = mongoose.model("Student", studentSchema);
+//const Student = mongoose.model("Student", studentSchema);
 
 
 // create document
@@ -192,7 +192,7 @@ async function createStudents() {
     ]);
     console.log("✅ Inserted");
 }
-createStudents();
+//createStudents();
 
 
 // read document
@@ -200,10 +200,15 @@ async function readStudents() {
     const all = await Student.find();
     console.log(all);
 }
-readStudents();
+//readStudents();
 
 
 // update document
+async function updateStudent() {
+    await Student.updateOne({ name: "Ali" }, { age: 22 });
+    console.log("✅ Updated Ali");
+}
+updateStudent();
 
 
 // delete document
