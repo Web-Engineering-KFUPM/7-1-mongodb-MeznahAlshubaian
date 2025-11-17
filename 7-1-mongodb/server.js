@@ -168,6 +168,9 @@
  */
 
 import mongoose from "mongoose";
+
+
+// establish connection
 const url = "mongodb+srv://s202268000_db_user:130119Zozo@cluster0.k4n2ato.mongodb.net/?appName=cluster0";
 mongoose.connect(url)
 const studentSchema = new mongoose.Schema({
@@ -177,10 +180,15 @@ const studentSchema = new mongoose.Schema({
 });
 const Student = mongoose.model("Student", studentSchema);
 
-// establish connection
-
-
 // define schema
+async function createStudents() {
+    await Student.insertMany([
+        { name: "Ali", age: 21, major: "CS" },
+        { name: "Sara", age: 23, major: "SE" }
+    ]);
+    console.log("✅ Inserted");
+}
+createStudents();
 
 
 // create document
