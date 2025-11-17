@@ -168,6 +168,14 @@
  */
 
 import mongoose from "mongoose";
+const url = "mongodb+srv://s202268000_db_user:130119Zozo@cluster0.k4n2ato.mongodb.net/?appName=cluster0";
+mongoose.connect(url)
+const studentSchema = new mongoose.Schema({
+    name: String,
+    age: Number,
+    major: String
+});
+const Student = mongoose.model("Student", studentSchema);
 
 // establish connection
 
