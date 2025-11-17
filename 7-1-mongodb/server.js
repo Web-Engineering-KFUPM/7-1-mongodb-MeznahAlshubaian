@@ -181,7 +181,7 @@ const studentSchema = new mongoose.Schema({
     age: Number,
    major: String
 });
-//const Student = mongoose.model("Student", studentSchema);
+const Student = mongoose.model("Student", studentSchema);
 
 
 // create document
@@ -208,11 +208,15 @@ async function updateStudent() {
     await Student.updateOne({ name: "Ali" }, { age: 22 });
     console.log("✅ Updated Ali");
 }
-updateStudent();
+//updateStudent();
 
 
 // delete document
-
+async function deleteStudent() {
+    await Student.deleteOne({ name: "Sara" });
+    console.log("✅ Deleted Sara");
+}
+deleteStudent()
 
 
 
