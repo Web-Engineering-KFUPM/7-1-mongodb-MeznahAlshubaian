@@ -173,6 +173,9 @@ import mongoose from "mongoose";
 // establish connection
 const url = "mongodb+srv://s202268000_db_user:130119Zozo@cluster0.k4n2ato.mongodb.net/?appName=cluster0";
 mongoose.connect(url)
+
+
+// define schema
 const studentSchema = new mongoose.Schema({
     name: String,
     age: Number,
@@ -180,7 +183,8 @@ const studentSchema = new mongoose.Schema({
 });
 const Student = mongoose.model("Student", studentSchema);
 
-// define schema
+
+// create document
 async function createStudents() {
     await Student.insertMany([
         { name: "Ali", age: 21, major: "CS" },
@@ -191,10 +195,12 @@ async function createStudents() {
 createStudents();
 
 
-// create document
-
-
 // read document
+async function readStudents() {
+    const all = await Student.find();
+    console.log(all);
+}
+readStudents();
 
 
 // update document
